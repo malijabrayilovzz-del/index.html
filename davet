@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Questions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #questionBox { margin-top: 20px; font-size: 20px; font-weight: bold; }
+    .btn { padding: 10px 20px; margin: 10px; font-size: 18px; cursor: pointer; }
+    #celebrate {
+      font-size: 40px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <a href="#" id="startLink">Tıkla 🎀</a>
+
+  <div id="questionBox"></div>
+  <div id="buttons"></div>
+  <div id="celebrate">🎉🎉🎉</div>
+
+  <script>
+    const questionBox = document.getElementById("questionBox");
+    const buttons = document.getElementById("buttons");
+    const celebrate = document.getElementById("celebrate");
+
+    document.getElementById("startLink").onclick = function () {
+      showFirstQuestion();
+    };
+
+    function showFirstQuestion() {
+      questionBox.textContent = "Yarın gelirmisin laleee güzel kız?";
+      buttons.innerHTML = "";
+      addButton("Evet", showSecondQuestion);
+      addButton("Hayır", showSecondQuestion);
+    }
+
+    function showSecondQuestion() {
+      questionBox.textContent = "Evet evet?";
+      buttons.innerHTML = "";
+      addButton("Evet", celebrateAction);
+      addButton("Evet", celebrateAction);
+    }
+
+    function celebrateAction() {
+      celebrate.style.opacity = 1;
+      celebrate.textContent = "🎉 Sevindim!!! 🎉";
+    }
+
+    function addButton(text, action) {
+      const btn = document.createElement("button");
+      btn.textContent = text;
+      btn.className = "btn";
+      btn.onclick = action;
+      buttons.appendChild(btn);
+    }
+  </script>
+</body>
+</html>
+
